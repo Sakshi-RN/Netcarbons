@@ -25,9 +25,11 @@ const Cart = ({ toggleCartModal }) => {
   }, [dispatch]);
 
   const handleContinue = () => {
+    toggleCartModal(); 
     navigation.navigate("Address");
   };
   const handleLogin = () => {
+    toggleCartModal(); 
     navigation.navigate("LetStart");
   };
   
@@ -52,7 +54,8 @@ const Cart = ({ toggleCartModal }) => {
       productId={item.cartItemId}
       itemText={item.product.name}
       quantityText={`${item.quantity} x`}
-      priceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}${item.product.priceList[0].oldPrice} / ${item.product.priceList[0].currencySymbol}${item.product.priceList[0].price}`}
+      oldpriceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}${item.product.priceList[0].oldPrice}`}
+      priceText={`/${item.product.priceList[0].currencySymbol}${item.product.priceList[0].price}`}
       totalPriceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}${
         item.quantity * item.product.priceList[0].price
       }`}

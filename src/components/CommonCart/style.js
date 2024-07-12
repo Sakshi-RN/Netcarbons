@@ -29,23 +29,34 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.lightgrey,
     borderRadius: 12,
+    paddingHorizontal:responsiveWidth(5)
   },
   orderItem: {
     fontFamily: Fonts.regular,
-    fontSize: responsiveFontSize(2.1),
-    color: Colors.OFFBLACK,
+    fontSize: responsiveFontSize(1.8),
+    color: Colors.DARKGREY,
+  },
+  oldpriceText:{
+    fontFamily: Fonts.regular,
+    fontSize: responsiveFontSize(1.8),
+    color: Colors.DARKGREY,
+    textDecorationLine:'line-through'
   },
   orderItemText: {
     fontFamily: Fonts.medium,
     fontSize: responsiveFontSize(2.1),
     color: Colors.OFFBLACK,
-    width: responsiveHeight(28),
-    marginTop: responsiveHeight(0.5),
+    width:'80%',
+    marginVertical:responsiveHeight(0.5)
+
+
   },
   orderDetails: {
     fontFamily: Fonts.regular,
-    fontSize: responsiveFontSize(2.1),
+    fontSize: responsiveFontSize(2),
     color: Colors.SECONDARY,
+    // marginBottom:responsiveHeight(1)
+
   },
   btnText: {
     color: Colors.black,
@@ -66,14 +77,15 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+
   },
   icon: {
     marginRight: responsiveWidth(2),
   },
   priceRow: {
-    alignItems: "flex-start",
-    width: responsiveHeight(28),
-    marginTop: responsiveHeight(2),
+   flexDirection:'row',
+  //  marginBottom:responsiveHeight(10)
+
   },
   marginTop: {
     marginTop: responsiveHeight(2),
@@ -105,8 +117,8 @@ export default StyleSheet.create({
     marginTop: responsiveHeight(2),
   },
   image: {
-    width: 105,
-    height: 105,
+    width: 110,
+    height: 110,
     borderRadius: 8,
     resizeMode: "cover",
   },

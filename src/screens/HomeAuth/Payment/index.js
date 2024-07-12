@@ -30,7 +30,7 @@ import {
   Apply_Coupon,
   Remove_Coupon,
 } from "../../../redux/features/CouponReducer";
-import { responsiveHeight } from "react-native-responsive-dimensions";
+import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 
 
 const Payment = () => {
@@ -146,6 +146,8 @@ const Payment = () => {
     );
   };
   const renderItem = ({ item }) => (
+    <View style={{paddingHorizontal:responsiveWidth(5)}}>
+
     <CommonCart
       productId={item.cartItemId}
       itemText={item.product.name}
@@ -157,6 +159,7 @@ const Payment = () => {
       showDeleteIcon={true}
       showIncrementContainer={true}
     />
+        </View>
   );
 
   const renderFlatlist = () => {
@@ -227,10 +230,10 @@ const Payment = () => {
             placeholder={"Change Currency USD($)"}
           />
         </View>
-<View style={{paddingBottom:responsiveHeight(8)}}>
-        <MainButton title="Next"
-     />
-</View>
+        <View style={{ paddingBottom: responsiveHeight(8) }}>
+          <MainButton title="Next"
+          />
+        </View>
       </View>
     );
   };

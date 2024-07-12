@@ -17,6 +17,7 @@ const CommonCart = ({
   productId,
   itemText,
   quantityText,
+  oldpriceText,
   priceText,
   imgUrl,
   totalPriceText,
@@ -73,13 +74,14 @@ const CommonCart = ({
       <View style={styles.orderContainer}>
         <View style={styles.row}>
           <Image source={{ uri: imgUrl }} style={styles.image} />
-          <View style={{ alignItems: "center", marginLeft: 10 }}>
+          <View style={{paddingHorizontal:10}}>
             <Text style={styles.orderItemText}>{itemText}</Text>
+            <Text style={styles.orderDetails}>{quantityText}</Text>
             <View style={styles.priceRow}>
-              <Text style={styles.orderDetails}>{quantityText}</Text>
-              <Text style={styles.orderItem}>{priceText}</Text>
+              <Text style={styles.oldpriceText}>{oldpriceText}</Text>
+             <Text style={styles.orderItem}>{priceText}</Text>
+              </View>
               <Text style={styles.orderItemText}>{totalPriceText}</Text>
-            </View>
           </View>
         </View>
         <View style={[styles.row, styles.marginTop]}>
