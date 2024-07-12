@@ -43,12 +43,8 @@
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyDHyIjrBQeMHueccXbdOK2gX3XYGmEo6N4"
-        },
-        "permissions": [
-          "android.permission.RECORD_AUDIO",
-          "ACCESS_COARSE_LOCATION",
-          "ACCESS_FINE_LOCATION"
-        ]
+        }
+       
       },
       "package": "com.starfishgp.Ecostance",
       "permissions": ["android.permission.RECORD_AUDIO"]
