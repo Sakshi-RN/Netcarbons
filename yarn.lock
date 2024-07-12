@@ -5829,6 +5829,11 @@ react-native-chart-kit@^6.12.0:
     paths-js "^0.4.10"
     point-in-polygon "^1.0.1"
 
+react-native-circular-picker@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-circular-picker/-/react-native-circular-picker-1.0.6.tgz#76b200c83959cd74446ada3bb652782d1722929b"
+  integrity sha512-lGrQXNoMkB14CSmhXrsUxamOj8ntNdSpLHBCs1HN64foRAFWa82Si810JkZ2gs4Sggi0IBYH08heyeEKFV9WUQ==
+
 react-native-country-codes-picker@^2.3.5:
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/react-native-country-codes-picker/-/react-native-country-codes-picker-2.3.5.tgz#159cbbcee14716533cdaa9997d457ab1a943038c"

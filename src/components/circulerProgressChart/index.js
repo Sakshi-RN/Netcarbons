@@ -1,89 +1,56 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Circle, G, Svg, Text as SvgText } from 'react-native-svg';
+import { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import CircularPicker from 'react-native-circular-picker';
+import { Colors } from '../../theme/colors';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
-const CircularProgressChart = ({ total, footprint, cost, reduction, size }) => {
-  const strokeWidth = 20;
-  const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
+export default function App() {
+  const [price, setPrice] = useState(0);
+  const handleChange = (v) => {
+    setPrice((v * 20).toFixed(0));
+    console.log(v);
+  };
 
-  const percentage = (footprint / total) * 100;
-  const dashOffset = circumference - (percentage / 100) * circumference;
-  
   return (
-    <View style={[styles.container, { width: size, height: size }]}>
-      <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-        <G rotation="-90" origin={`${size / 2}, ${size / 2}`}>
-          <Circle
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            stroke="#B7323B"
-            strokeWidth={strokeWidth}
-            fill="transparent"
-          />
-          <Circle
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            stroke="#7BA986"
-            strokeWidth={strokeWidth}
-            fill="transparent"
-            strokeDasharray={`${circumference} ${circumference}`}
-            strokeDashoffset={dashOffset}
-            strokeLinecap="round"
-          />
-        </G>
-        <SvgText
-          x={size / 2 - 26}
-          y={size / 2 - 10}
-          textAnchor="middle"
-          fill="black"
-          fontSize="24"
-          fontWeight="bold"
-        >
-          
-          ${cost}.00
-        </SvgText>
-        <SvgText
-          x={size / 2 -15}
-          y={size / 2 + 20}
-          textAnchor="middle"
-          fill="green"
-          fontSize="18"
-          fontWeight="bold"
-        >
-          {/* {reduction} Tons */}
-          {total} Tons
-        </SvgText>
-        <SvgText
-          x={size / 2}
-          y={size / 2 - radius - 10}
-          textAnchor="middle"
-          fill="gray"
-          fontSize="14"
-        >
-          My Co2 Footprint: {total} Tons
-        </SvgText>
-        <SvgText
-          x={size / 2}
-          y={size / 2 + radius + 20}
-          textAnchor="middle"
-          fill="gray"
-          fontSize="14"
-        >
-          My Co2 Reduction Cost: ${cost}
-        </SvgText>
-      </Svg>
+    <View style={styles.container}>
+      <CircularPicker
+        size={300}
+        gradients={{
+          0: ['#67bf73', 'white'],
+          15: ['#67bf73', '#67bf73'],
+          40: ['#67bf73', '#67bf73'],
+          70: ['#67bf73', '#67bf73'],
+        }}
+        strokeWidth={32}
+        backgroundColor={"#d65a38"}
+        onChange={handleChange}
+      >
+        <>
+          <Text style={styles.priceText}>INR ₹{price}</Text>
+          <Text style={styles.tonsText}>0 Tons</Text>
+        </>
+      </CircularPicker>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-    container: {
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    alignSelf: 'center',
+    marginTop: 10
+  },
+  priceText: {
+    textAlign: 'center',
+    fontWeight: '600',
+    fontSize: responsiveFontSize(4),
+    marginBottom: 7,
+    color: Colors.DARKRED,
+  },
+  tonsText: {
+    textAlign: 'center',
+    fontSize: 25,
+    color: '#67bf73',
+    fontWeight: '500',
+  },
 });
-
-export default CircularProgressChart;

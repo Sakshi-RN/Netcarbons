@@ -36,11 +36,12 @@ export default StyleSheet.create({
         paddingTop: Platform.OS == "ios" ? 30 : 0
     },
     chooseAmountLabel: {
-        fontSize: 24,
-        marginTop: responsiveHeight(4),
+        fontSize: responsiveFontSize(3),
+        marginTop: responsiveHeight(2),
         color: Colors.OFFBLACK,
         fontFamily: Fonts.medium,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        textAlign:'center'
     },
     calculateVectorCenter: {
         flex: 1,
@@ -53,16 +54,18 @@ export default StyleSheet.create({
         paddingVertical: responsiveHeight(4)
     },
     productSelectedText: {
-        fontSize: 18,
+        fontSize:responsiveFontSize(2),
         color: Colors.OFFBLACK,
         fontFamily: Fonts.medium,
-        marginVertical: responsiveHeight(2)
+        marginTop: responsiveHeight(1.5),
+        alignSelf:'center',
     },
     productDescText: {
         fontSize: 16,
-        lineHeight: 25,
         color: Colors.SECONDARY,
-        fontFamily: Fonts.regular
+        fontFamily: Fonts.regular,
+        marginTop: responsiveHeight(2),
+        alignSelf:'center',
     },
     bottomButtonRow: {
         flexDirection: 'row',
