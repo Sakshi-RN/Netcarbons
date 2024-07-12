@@ -1,0 +1,33 @@
+const images = {
+    logoText: require('../assets/images/logoText.png'),
+    editButton:require('../assets/images/edit.png'),
+    Mountain:require('../assets/images/Mountain.png'),
+    orderImg:require('../assets/images/orderImg.png'),
+    downloadIcon:require('../assets/images/downloadIcon.png'),
+    cards:require('../assets/images/cards.png'),
+    applepay:require('../assets/images/applepay.png'),
+    Visa:require('../assets/images/Visa.png'),
+    Logout:require('../assets/images/Logout.png'),
+    useragrement:require('../assets/images/useragrement.png'),
+    settingIcon:require('../assets/images/settingIcon.png'),
+    Shoppingcart:require('../assets/images/Shoppingcart.png'),
+    globe:require('../assets/images/globe.png'),
+    prfl:require('../assets/images/prfl.png'),
+    uploadPic:require('../assets/images/uploadPic.png'),
+    CaptureImage:require('../assets/images/CaptureImage.png'),
+    selectImage:require('../assets/images/selectImage.png'),
+    checked:require('../assets/images/checked.png'),
+    emtycart:require('../assets/images/emtycart.png'),
+    thankyouImg:require('../assets/images/thankyouImg.png'),
+    linkedin:require('../assets/images/linkedin.png'),
+    whatsapp:require('../assets/images/whatsapp.png'),
+    twitter:require('../assets/images/twitter.png'),
+    facebook:require('../assets/images/facebook.png'),
+    scanner:require('../assets/images/scanner.png'),
+    pdf:require('../assets/images/pdf.png'),
+    verifyOtp:require('../assets/images/verifyOtp.png'),
+    checkbox_background:require('../assets/images/checkbox_background.png'),
+    tracker:require('../assets/images/tracker.png')
+};
+
+export default images;

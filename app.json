@@ -1,0 +1,67 @@
+{
+  "expo": {
+    "name": "NetCarbons",
+    "slug": "NetCarbons",
+    "version": "1.0.0",
+    "platforms": ["ios", "android"],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./src/assets/fonts/WorkSans-Medium.ttf",
+            "./src/assets/fonts/WorkSans-Regular.ttf"
+          ]
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyDHyIjrBQeMHueccXbdOK2gX3XYGmEo6N4"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDHyIjrBQeMHueccXbdOK2gX3XYGmEo6N4"
+        },
+        "permissions": [
+          "android.permission.RECORD_AUDIO",
+          "ACCESS_COARSE_LOCATION",
+          "ACCESS_FINE_LOCATION"
+        ]
+      },
+      "package": "com.starfishgp.Ecostance",
+      "permissions": ["android.permission.RECORD_AUDIO"]
+    },
+
+       "web": {
+        "favicon": "./assets/favicon.png"
+       },
+    "extra": {
+      "eas": {
+        "projectId": "ff857e0d-9c02-459c-88d2-54c8bfad3307"
+      }
+    },
+    "owner": "starfishgp"
+  }
+}

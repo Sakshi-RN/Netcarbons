@@ -1,0 +1,32 @@
+export class Colors {
+    static PRIMARY = "#E92729";
+    static SECONDARY ='#7E7E7E';
+    static OFFBLACK ="#333333";
+    static GREEN = "#5ABEA0";
+    static BGWHITE = "#F5F5F5";
+    static ORANGE =  '#EA580C';
+    static OFFWHITE = '#FCFCFC';
+    static WHITE = "#FFFFFF";
+    static GREY = "#726E6E";
+    static MEDIUMDARKGREY = "#687684";
+    static LIGHTGREY = "#C6C6C6";
+    static LIGHTGREYOFF = '#DDDCE1';
+    static DARKGREY = '#6F6F6F'
+    static BLACK = "#010101";
+    static SKYBLUE = "#5C89B1";
+    static LINKBLUE = "#4C9EEB";
+    static LIGHTBLUE = "#7DB1D1";
+    static PLACEHOLDERBLUE = "#F7F9F9";
+    static RED = "red";
+    static PINK = '#E0245E';
+    static white = "#ffffff";
+    static labelColor = "#666666";
+    static borderColor = "#C2C2C2";
+    static grey = '#999999';
+    static black = '#000000';
+    static lightgrey ='#DDDCE1';
+    static PastelGreen ='#7BA986';
+    static bilBox='#EEEEEE';
+    static DARKRED='#B7323B';
+    static socialColor ="#F2F2F2"  
+}
