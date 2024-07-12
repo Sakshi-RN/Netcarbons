@@ -41,6 +41,6 @@ export default {
   mapVectorIcon:require('../assets/images/map-vector.png'),
   welcomeVectorFirst:require('../assets/images/welcome-vector-first.png'),
   welcomeVectorSecond:require('../assets/images/welcome-vector-second.png'),
-  purchase:require('../assets/images/purchase.png'),
+  purchase:require('../assets/images/purchase.jpg'),
 
 }

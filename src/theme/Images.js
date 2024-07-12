@@ -27,7 +27,7 @@ const images = {
     pdf:require('../assets/images/pdf.png'),
     verifyOtp:require('../assets/images/verifyOtp.png'),
     checkbox_background:require('../assets/images/checkbox_background.png'),
-    tracker:require('../assets/images/tracker.png')
+    tracker:require('../assets/images/tracker.jpg')
 };
 
 export default images;
