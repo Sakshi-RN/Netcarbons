@@ -58,6 +58,7 @@ const WishlistComponent = ({ toggleWishlistModal }) => {
         imgUrl={product.thumbImage[0]}
         showHeartIcon={true}
         productId={product._id}
+        priceValue={item.product.priceList[ 0 ].price}
       />
     );
   };

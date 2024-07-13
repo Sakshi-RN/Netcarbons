@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, LogBox } from "react-native";
 import { Provider } from "react-redux";
 import Navigation from "./src/routes/navigation";
 import store from "./src/redux/storeConfig";
@@ -9,6 +9,8 @@ import * as SplashScreen from "expo-splash-screen";
 SplashScreen.preventAutoHideAsync();
 
 function App() {
+  LogBox.ignoreLogs([ 'Warning: ...' ]);
+  LogBox.ignoreAllLogs();
   const [fontsLoaded, fontError] = useFonts({
     "WorkSans-Medium": require("./src/assets/fonts/WorkSans-Medium.ttf"),
     "WorkSans-Regular": require("./src/assets/fonts/WorkSans-Regular.ttf"),

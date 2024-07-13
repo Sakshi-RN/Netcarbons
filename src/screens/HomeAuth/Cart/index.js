@@ -32,7 +32,6 @@ const Cart = ({ toggleCartModal }) => {
     toggleCartModal(); 
     navigation.navigate("LetStart");
   };
-  
 
   const renderEmptyCart = () => {
     return (
@@ -49,29 +48,33 @@ const Cart = ({ toggleCartModal }) => {
     );
   };
 
-  const renderItem = ({ item }) => (
-    <CommonCart
-      productId={item.cartItemId}
-      itemText={item.product.name}
-      quantityText={`${item.quantity} x`}
-      oldpriceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}${item.product.priceList[0].oldPrice}`}
-      priceText={`/${item.product.priceList[0].currencySymbol}${item.product.priceList[0].price}`}
-      totalPriceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}${
-        item.quantity * item.product.priceList[0].price
-      }`}
-      imgUrl={item.product.thumbImage[0]}
-      showDeleteIcon={true}
-      showIncrementContainer={true}
-    />
-  );
+  const renderItem = ({ item }) => {
+    return(
+      <CommonCart 
+        productId={item.cartItemId}
+        itemText={item.product.name}
+        quantityText={`${item.quantity} x`}
+        oldpriceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}${item.product.priceList[0].oldPrice}`}
+        priceValue={item.product.priceList[0].price}
+        priceText={`/${item.product.priceList[0].currencySymbol}`}
+        totalPriceText={`${
+          item.quantity * item.product.priceList[0].price
+        }`}
+        currency={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}`}
+        imgUrl={item.product.thumbImage[0]}
+        showDeleteIcon={true}
+        showIncrementContainer={true}
+      />
+    )
+  };
 
-  if (loading?.fetch) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="grey" />
-      </View>
-    );
-  }
+  // if (loading?.fetch) {
+  //   return (
+  //     <View style={styles.container}>
+  //       <ActivityIndicator size="large" color="grey" />
+  //     </View>
+  //   );
+  // }
 
   if (error?.fetch) {
     return (
@@ -90,6 +93,7 @@ const Cart = ({ toggleCartModal }) => {
         keyExtractor={(item) => item._id}
         ListEmptyComponent={renderEmptyCart}
       />
+
       {products.length > 0 && (
         <>
           <Text style={styles.totalItemsText}>
@@ -105,7 +109,6 @@ const Cart = ({ toggleCartModal }) => {
           </Text>
           <MainButton title="CHECKOUT" onPress={handleContinue} />
           {/* <MainButton title="LOGIN TO CHECKOUT" onPress={handleLogin} /> */}
-
         </>
       )}
     </View>

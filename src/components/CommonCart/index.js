@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import { useDispatch, useSelector } from "react-redux";
-import images from "../../theme/Images";
 import styles from "./style";
 import { Colors } from "../../theme/colors";
-import WishlistButton from '../../components/WishlistButton'
+import WishlistButton from '../../components/WishlistButton';
 import {
   fetchCart,
   removeFromCart,
@@ -16,11 +15,12 @@ const CommonCart = ({
   dataItem,
   productId,
   itemText,
-  quantityText,
   oldpriceText,
   priceText,
+  priceValue,
   imgUrl,
   totalPriceText,
+  currency,
   showDeleteIcon = false,
   showHeartIcon = false,
   showIncrementContainer = false,
@@ -43,9 +43,10 @@ const CommonCart = ({
       })
     ).then((responseJson) => {
       setQuantity((prev) => prev + 1);
+      dispatch(fetchCart());
     });
   };
-
+console.log("priceValuepriceValuepriceValue",priceValue)
   const handleDecreaseItemQuantity = () => {
     if (quantity > 1) {
       dispatch(
@@ -55,6 +56,7 @@ const CommonCart = ({
           cartItemId: productId,
         })
       ).then((responseJson) => {
+        dispatch(fetchCart());
         setQuantity((prev) => prev - 1);
       });
     } else {
@@ -74,14 +76,14 @@ const CommonCart = ({
       <View style={styles.orderContainer}>
         <View style={styles.row}>
           <Image source={{ uri: imgUrl }} style={styles.image} />
-          <View style={{paddingHorizontal:10}}>
+          <View style={{ paddingHorizontal: 10 }}>
             <Text style={styles.orderItemText}>{itemText}</Text>
-            <Text style={styles.orderDetails}>{quantityText}</Text>
+            {!showHeartIcon?   <Text style={styles.orderDetails}>{quantity}X</Text>:null}
             <View style={styles.priceRow}>
-              <Text style={styles.oldpriceText}>{oldpriceText}</Text>
-             <Text style={styles.orderItem}>{priceText}</Text>
-              </View>
-              <Text style={styles.orderItemText}>{totalPriceText}</Text>
+              <Text style={styles.oldpriceText}>{oldpriceText}{}</Text>
+              <Text style={styles.orderItem}>{priceText}{priceValue}</Text>
+            </View>
+            {!showHeartIcon?<Text style={styles.orderItemText}>{currency}{priceValue*quantity}</Text>:null}
           </View>
         </View>
         <View style={[styles.row, styles.marginTop]}>
