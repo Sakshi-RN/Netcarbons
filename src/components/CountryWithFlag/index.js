@@ -5,6 +5,7 @@ import { Colors } from '../../theme/colors';
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import { Fonts } from '../../theme/fonts';
 import { DropdownArrowIcon } from '../../assets';
+import * as Location from 'expo-location';
 
 const CountryComponent = ({ isVisible, toggleModal, onSelectCountry, isLoading }) => {
     const countries = Country.getAllCountries().map((country) => ({
@@ -63,23 +64,37 @@ const ParentComponent = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                const userCountry = Country.getCountryByCode(data.country_code);
-                if (userCountry) {
-                    setSelectedCountry({
-                        isoCode: userCountry.isoCode,
-                        name: userCountry.name,
-                        flag: userCountry.flag,
-                    });
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                console.error('Permission to access location was denied');
+                setIsLoading(false);
+                return;
+            }
+
+            try {
+                let location = await Location.getCurrentPositionAsync({});
+                let { latitude, longitude } = location.coords;
+                // Now you can use latitude and longitude to fetch country details
+                // Example fetch:
+                let response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+                let data = await response.json();
+                if (data.countryCode) {
+                    let userCountry = Country.getCountryByCode(data.countryCode);
+                    if (userCountry) {
+                        setSelectedCountry({
+                            isoCode: userCountry.isoCode,
+                            name: userCountry.name,
+                            flag: userCountry.flag,
+                        });
+                    }
                 }
-                setIsLoading(false); 
-            })
-            .catch(error => {
-                console.error("Error fetching user's location:", error);
-                setIsLoading(false); 
-            });
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Error fetching user location:', error);
+                setIsLoading(false);
+            }
+        })();
     }, []);
 
     const toggleModal = () => {

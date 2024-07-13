@@ -48,6 +48,7 @@
       },
       "package": "com.starfishgp.Ecostance",
       "permissions": ["android.permission.RECORD_AUDIO"]
+  
     },
 
        "web": {
