@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { Country } from 'country-state-city';
 import { Colors } from '../../theme/colors';
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import { Fonts } from '../../theme/fonts';
 import { DropdownArrowIcon } from '../../assets';
 
-
-const CountryComponent = ({ isVisible, toggleModal, onSelectCountry }) => {
+const CountryComponent = ({ isVisible, toggleModal, onSelectCountry, isLoading }) => {
     const countries = Country.getAllCountries().map((country) => ({
         isoCode: country.isoCode,
         name: country.name,
@@ -38,7 +37,11 @@ const CountryComponent = ({ isVisible, toggleModal, onSelectCountry }) => {
         <Modal transparent={true} visible={isVisible}>
             <View style={styles.modalOverlay}>
                 <View style={styles.modalContainer}>
-                    {renderFlatlist()}
+                    {isLoading ? (
+                        <ActivityIndicator size="large" color={Colors.GREY} />
+                    ) : (
+                        renderFlatlist()
+                    )}
                     <TouchableOpacity onPress={toggleModal}>
                         <Text style={styles.closeText}>Close</Text>
                     </TouchableOpacity>
@@ -57,6 +60,27 @@ const CountryComponent = ({ isVisible, toggleModal, onSelectCountry }) => {
 const ParentComponent = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                const userCountry = Country.getCountryByCode(data.country_code);
+                if (userCountry) {
+                    setSelectedCountry({
+                        isoCode: userCountry.isoCode,
+                        name: userCountry.name,
+                        flag: userCountry.flag,
+                    });
+                }
+                setIsLoading(false); 
+            })
+            .catch(error => {
+                console.error("Error fetching user's location:", error);
+                setIsLoading(false); 
+            });
+    }, []);
 
     const toggleModal = () => {
         setIsModalVisible(!isModalVisible);
@@ -67,17 +91,18 @@ const ParentComponent = () => {
     };
 
     return (
-        <View>
+        <View style={styles.container}>
+
             <View style={styles.dropdown}>
-                {selectedCountry ? (
-                    <View style={styles.selectedCountryContainer}>
-                        <Text style={styles.flagText}>{selectedCountry.flag}</Text>
-                        <Text style={styles.selectedCountryText}>{selectedCountry.name}</Text>
-                    </View>
-                ) : (
-                    <Text style={styles.dropdownText}>Select Country</Text>
-                )}
-                <TouchableOpacity onPress={toggleModal}>
+                <TouchableOpacity onPress={toggleModal} style={styles.dropdownContent}>
+                    {selectedCountry ? (
+                        <View style={styles.selectedCountryContainer}>
+                            <Text style={styles.flagText}>{selectedCountry.flag}</Text>
+                            <Text style={styles.selectedCountryText}>{selectedCountry.name}</Text>
+                        </View>
+                    ) : (
+                        <Text style={styles.dropdownText}></Text>
+                    )}
                     <DropdownArrowIcon />
                 </TouchableOpacity>
             </View>
@@ -86,6 +111,7 @@ const ParentComponent = () => {
                 isVisible={isModalVisible}
                 toggleModal={toggleModal}
                 onSelectCountry={handleSelectCountry}
+                isLoading={isLoading} 
             />
         </View>
     );
@@ -94,6 +120,10 @@ const ParentComponent = () => {
 export default ParentComponent;
 
 const styles = StyleSheet.create({
+    container: {
+        marginTop: responsiveHeight(8),
+        paddingHorizontal: responsiveWidth(5),
+    },
     modalOverlay: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.5)',
@@ -117,7 +147,6 @@ const styles = StyleSheet.create({
     },
     flagText: {
         fontSize: 18,
-
     },
     countryNameText: {
         fontSize: 16,
@@ -135,13 +164,14 @@ const styles = StyleSheet.create({
         height: responsiveHeight(6),
         borderColor: Colors.lightgrey,
         borderWidth: 1.5,
-        color: Colors.OFFBLACK,
+        justifyContent: 'center',
+
+    },
+    dropdownContent: {
+        flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        flexDirection: 'row',
-        marginHorizontal: responsiveWidth(5),
-        marginTop: responsiveHeight(7),
-        paddingHorizontal: responsiveWidth(5)
+        paddingHorizontal: responsiveWidth(5),
     },
     selectedCountryContainer: {
         flexDirection: 'row',
@@ -151,19 +181,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: Colors.OFFBLACK,
         marginLeft: 10,
-        fontFamily: Fonts.regular
+        fontFamily: Fonts.regular,
     },
     dropdownText: {
         fontSize: 18,
         color: Colors.DARKGREY,
-    },
-    textInput: {
-        height: 50,
-        borderColor: Colors.grey,
-        borderWidth: 1.3,
-        paddingHorizontal: 8,
-        marginBottom: responsiveHeight(2),
-        color: Colors.OFFBLACK,
-        width: '100%',
     },
 });
