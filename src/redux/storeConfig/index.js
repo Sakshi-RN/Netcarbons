@@ -32,7 +32,10 @@ const reducer = combineReducers({
 const thunkResponseLogger = (storeAPI) => (next) => async (action) => {
   if (typeof action === "function") {
     const result = await action(storeAPI.dispatch, storeAPI.getState);
+<<<<<<< HEAD
     // console.log("Thunk action result:", result);
+=======
+>>>>>>> main
     return result;
   }
   return next(action);

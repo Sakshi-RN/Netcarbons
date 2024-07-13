@@ -11,7 +11,6 @@ const Splash = ({navigation}) => {
 		setTimeout(() => {
 		  const login_type = AsyncStorage.getItem('loginUser')
 		  .then((value) => {
-			// console.log("splash user", value)
 			if(value ==  null){
 			  navigation.dispatch(CommonActions.reset({
 				index: 0,

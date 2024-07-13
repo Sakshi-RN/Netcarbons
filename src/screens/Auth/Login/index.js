@@ -70,7 +70,6 @@ const Login = (props) => {
 
       dispatch(auth.loginThread(data))
         .then((responseJson) => {
-          console.log("Login Response:", responseJson);
           if (responseJson?.payload?.success == true) {
             let data = {
               value: 0,
