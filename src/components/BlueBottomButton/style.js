@@ -84,4 +84,30 @@ export default StyleSheet.create({
         elevation: 5,
 
     },
+    modalBackground: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'flex-start',
+    },
+    modalContent: {
+        width: '90%',
+        height: '100%',
+        backgroundColor: Colors.WHITE,
+        position: 'absolute',
+        top: 0,
+    },
+
+    newwrow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingTop: responsiveHeight(5),
+        paddingHorizontal: responsiveWidth(3)
+
+    },
+    headerText: {
+        fontFamily: Fonts.regular,
+        fontSize: responsiveFontSize(2.5),
+        color: Colors.OFFBLACK,
+    },
 });

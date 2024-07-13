@@ -11,7 +11,7 @@ import styles from './style';
 import CommonHeader from '../../../components/HomeHeaders/CommonHeader';
 
 const Calculate = ({ route, navigation }) => {
-    const { carbonEmissionParam } = route?.params;
+    const { carbonEmissionParam =''} = route?.params;
     const [email, setEmail] = useState("");
 
     const CircularProgressBar = () => {
