@@ -88,10 +88,6 @@ const Address = () => {
   };
 
   const handleSelectCountry = (countryObject) => {
-<<<<<<< HEAD
-    // console.log("Country Cliked", countryObject);
-=======
->>>>>>> main
     dispatch(
       Set_Address_Field({
         field: "country",
@@ -169,6 +165,7 @@ const Address = () => {
   };
 
   const handleSave = () => {
+    // console.log("s csdvbjssdsdvacabdhjqwadyfbjksdvb")
     if (!validateFields()) {
       return;
     }
@@ -185,10 +182,6 @@ const Address = () => {
   };
 
   const handlePhonenumberChange = (text) => {
-<<<<<<< HEAD
-    // console.log("Phonenumber" , text)
-=======
->>>>>>> main
     dispatch(Set_Address_Field({ field: "phone", value: text }));
   };
 

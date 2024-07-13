@@ -72,10 +72,6 @@ const CalculateCarbonFootprint = (props) => {
                         let countrySelected = firstCarbonValue[0];
                         setCountry(countrySelected?.value)
                         carbonValue = countrySelected?.id;
-<<<<<<< HEAD
-                        // console.log("firstCarbonValue", firstCarbonValue)
-=======
->>>>>>> main
                         setCounryData(data)
                     } else {
                         setCounryData([])

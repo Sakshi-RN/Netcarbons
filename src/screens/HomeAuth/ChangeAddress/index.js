@@ -154,10 +154,6 @@ const ChangeAddress = () => {
 
     dispatch(Change_Address(address)).then((responseJson) => {
       dispatch(Get_Address());
-<<<<<<< HEAD
-      // console.log(responseJson);
-=======
->>>>>>> main
       navigation.goBack();
     });
   };

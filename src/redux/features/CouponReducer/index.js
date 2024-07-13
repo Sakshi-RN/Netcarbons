@@ -46,10 +46,6 @@ export const Remove_Coupon = createAsyncThunk(
           },
         }
       );
-<<<<<<< HEAD
-      // console.log("Coupon Removed: 🚀⚙️", response.data);
-=======
->>>>>>> main
       return response.data;
     } catch (error) {
       return rejectWithValue(
