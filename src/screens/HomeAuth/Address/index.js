@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -88,6 +89,7 @@ const Address = () => {
   };
 
   const handleSelectCountry = (countryObject) => {
+    console.log("Country Cliked", countryObject);
     dispatch(
       Set_Address_Field({
         field: "country",
@@ -165,7 +167,6 @@ const Address = () => {
   };
 
   const handleSave = () => {
-    // console.log("s csdvbjssdsdvacabdhjqwadyfbjksdvb")
     if (!validateFields()) {
       return;
     }
@@ -182,6 +183,7 @@ const Address = () => {
   };
 
   const handlePhonenumberChange = (text) => {
+    console.log("Phonenumber" , text)
     dispatch(Set_Address_Field({ field: "phone", value: text }));
   };
 
