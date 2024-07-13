@@ -78,12 +78,12 @@ console.log("priceValuepriceValuepriceValue",priceValue)
           <Image source={{ uri: imgUrl }} style={styles.image} />
           <View style={{ paddingHorizontal: 10 }}>
             <Text style={styles.orderItemText}>{itemText}</Text>
-            <Text style={styles.orderDetails}>{quantity}X</Text>
+            {!showHeartIcon?   <Text style={styles.orderDetails}>{quantity}X</Text>:null}
             <View style={styles.priceRow}>
               <Text style={styles.oldpriceText}>{oldpriceText}{}</Text>
               <Text style={styles.orderItem}>{priceText}{priceValue}</Text>
             </View>
-            <Text style={styles.orderItemText}>{currency}{priceValue*quantity}</Text>
+            {!showHeartIcon?<Text style={styles.orderItemText}>{currency}{priceValue*quantity}</Text>:null}
           </View>
         </View>
         <View style={[styles.row, styles.marginTop]}>
