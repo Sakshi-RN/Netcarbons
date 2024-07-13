@@ -107,7 +107,6 @@ const Payment = () => {
         }
       })
       .catch((error) => {
-        console.log("Coupon Apply Error: ", error);
         setCouponError(error.message);
       });
   };

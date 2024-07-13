@@ -72,7 +72,6 @@ const CalculateCarbonFootprint = (props) => {
                         let countrySelected = firstCarbonValue[0];
                         setCountry(countrySelected?.value)
                         carbonValue = countrySelected?.id;
-                        console.log("firstCarbonValue", firstCarbonValue)
                         setCounryData(data)
                     } else {
                         setCounryData([])
@@ -96,7 +95,6 @@ const CalculateCarbonFootprint = (props) => {
 
 
     let lifeStyle = income * housesize * airtravel * foodconsumption;
-    // console.log("lifeStyle", income, housesize, airtravel, foodconsumption, lifeStyle.toFixed(2))
 
     // Total emission= household * carbonCountryPerCapita - 0.15 *transport * carbonCountryPerCapita* lifeStyle;
     let totalEmission = household * carbonValue - 0.15 * transport * carbonValue * lifeStyle;

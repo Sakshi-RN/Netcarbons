@@ -51,7 +51,6 @@ const WishlistComponent = ({ toggleWishlistModal }) => {
     const priceInfo = product.priceList.find(
       (price) => price.currency === "USD"
     );
-    console.log("Wishlist Data: ",product._id)
     return (
       <CommonCart
         itemText={product.name}

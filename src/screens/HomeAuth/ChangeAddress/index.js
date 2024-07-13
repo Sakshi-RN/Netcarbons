@@ -154,7 +154,6 @@ const ChangeAddress = () => {
 
     dispatch(Change_Address(address)).then((responseJson) => {
       dispatch(Get_Address());
-      console.log(responseJson);
       navigation.goBack();
     });
   };

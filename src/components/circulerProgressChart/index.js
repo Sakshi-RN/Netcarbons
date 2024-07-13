@@ -8,7 +8,7 @@ export default function App() {
   const [price, setPrice] = useState(0);
   const handleChange = (v) => {
     setPrice((v * 20).toFixed(0));
-    console.log(v);
+
   };
 
   return (

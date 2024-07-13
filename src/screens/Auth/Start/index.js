@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react'
-import {View, KeyboardAvoidingView, Text} from 'react-native'
-import MainContainer from '../../../components/mainContainer'
+import React from 'react'
+import {View, Text} from 'react-native'
 import imagePaths from '../../../utilities/imagePaths'
 import ImageWrapper from '../../../components/image'
 import styles from './style'
@@ -9,11 +8,7 @@ import MainButton from '../../../components/MainButton'
 
 const Start = ({navigation}) => {
   return (
-	// <KeyboardAvoidingView
-	// 	behavior={Platform.OS === "ios" ? "padding" : "height"}
-	// 	style={styles.container}
-	// >
-		// <MainContainer fluid={true}>
+
 			<View style={styles.container}>
 				<View style={styles.welcomeContainer}>
 					<View></View>
@@ -32,14 +27,12 @@ const Start = ({navigation}) => {
 					<View style={styles.btnWrapper}>
 						<MainButton
 							title="Start"
-							onPress={()=> navigation.navigate("OnboardingFirst")}
+							onPress={()=> navigation.navigate("ChooseCountry")}
 						/>  
 					</View>
-				
 				</View>
 			</View>
-		// </MainContainer>
-	// </KeyboardAvoidingView>
+
 )}
 
 export default Start
