@@ -141,7 +141,7 @@ const EditProfile = ({ navigation }) => {
       }
 
       dispatch(updateProfile(formData)).then((responseJson) => {
-        console.log("Login Response:", responseJson);
+        // console.log("Login Response:", responseJson);
         if (responseJson?.payload?.success == true) {
           dispatch(fetchProfile());
         } else if (responseJson?.payload?.success == false) {

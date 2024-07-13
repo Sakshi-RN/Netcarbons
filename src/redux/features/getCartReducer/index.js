@@ -16,7 +16,7 @@ export const fetchCart = createAsyncThunk(
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
       });
-      console.log("Get Cart API :🚀", response.data.data);
+      // console.log("Get Cart API :🚀", response.data.data);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -43,7 +43,7 @@ export const addItemToCart = createAsyncThunk(
           },
         }
       );
-      console.log("Add Cart API : 🚀", response.data.data);
+      // console.log("Add Cart API : 🚀", response.data.data);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -67,7 +67,7 @@ export const removeFromCart = createAsyncThunk(
           },
         }
       );
-      console.log("Remove Cart API :🚀", response.data.data);
+      // console.log("Remove Cart API :🚀", response.data.data);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -94,7 +94,7 @@ export const updateCartItemQuantity = createAsyncThunk(
           },
         }
       );
-      console.log("Update Cart API :🚀", response.data.data);
+      // console.log("Update Cart API :🚀", response.data.data);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -23,7 +23,7 @@ export const Change_Address = createAsyncThunk(
           },
         }
       );
-      console.log("Address Update or Create : 🚀⚙️", response.data);
+      // console.log("Address Update or Create : 🚀⚙️", response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(
@@ -44,7 +44,7 @@ export const Get_Address = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Get Address Repsonse : ✅", response.data);
+      // console.log("Get Address Repsonse : ✅", response.data);
       const billingAddress = response.data.billingAddress;
       const filteredData = {
         firstName: billingAddress.firstName || "",
@@ -59,7 +59,7 @@ export const Get_Address = createAsyncThunk(
         countryCode: billingAddress.countryCode || "",
         pincode: billingAddress.pincode || "",
       };
-      console.log("Address Get : 🚀⚙️", filteredData);
+      // console.log("Address Get : 🚀⚙️", filteredData);
       return filteredData;
     } catch (error) {
       return rejectWithValue(

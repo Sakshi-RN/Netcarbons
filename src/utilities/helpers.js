@@ -107,7 +107,7 @@ export const confirmAlert = (object) => {
 	Alert.alert(object?.title, object.message, [
 	  {
 		text: object.cancel || 'cancel',
-		onPress: () => console.log("Cancel Pressed"),
+		// onPress: () => console.log("Cancel Pressed"),
 		style: "cancel"
 	  },
 	  { text: object.ok || 'ok', onPress: object.callBack }

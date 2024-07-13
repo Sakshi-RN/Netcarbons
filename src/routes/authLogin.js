@@ -15,6 +15,7 @@ import LetsGo from '../screens/Auth/LetsGo';
 import WelcomeUser from '../screens/HomeAuth/WelcomeUser';
 import { TabNavigation } from './tabsNavigation';
 import { HomeTab } from './HomeTab';
+import ProductDetail from '../screens/HomeAuth/ProductDetail';
 const AuthStack = createNativeStackNavigator();
 
 export const AuthLogin = (props) => {
@@ -32,6 +33,7 @@ export const AuthLogin = (props) => {
       <AuthStack.Screen name="OnboardingFirst" component={OnboardingFirst}/>
       <AuthStack.Screen name="OnboardingSecond" component={OnboardingSecond}/>
       <AuthStack.Screen name="OnboardingThird" component={OnboardingThird}/>
+      <AuthStack.Screen name="ProductDetail" component={ProductDetail}/>
       <AuthStack.Screen name="LetStart" component={LetStart}/>
       <AuthStack.Screen name="Login" component={Login}/>
       <AuthStack.Screen name="Register" component={Register}/>

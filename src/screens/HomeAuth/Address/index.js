@@ -88,7 +88,7 @@ const Address = () => {
   };
 
   const handleSelectCountry = (countryObject) => {
-    console.log("Country Cliked", countryObject);
+    // console.log("Country Cliked", countryObject);
     dispatch(
       Set_Address_Field({
         field: "country",
@@ -182,7 +182,7 @@ const Address = () => {
   };
 
   const handlePhonenumberChange = (text) => {
-    console.log("Phonenumber" , text)
+    // console.log("Phonenumber" , text)
     dispatch(Set_Address_Field({ field: "phone", value: text }));
   };
 

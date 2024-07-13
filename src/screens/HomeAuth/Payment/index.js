@@ -32,24 +32,23 @@ import {
 } from "../../../redux/features/CouponReducer";
 import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 
-
 const Payment = () => {
-  const [index, setIndex] = useState(0);
+  const [ index, setIndex ] = useState(0);
 
   const onIndexChanged = (newIndex) => {
     setIndex(newIndex);
-  }
+  };
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [toggleShow, setToggleShow] = useState(true);
-  const [selectedOption, setSelectedOption] = useState("oneTime");
-  const [isCurrencyFocus, setCurrencyFocus] = useState(false);
-  const [selectedCurrency, setSelectedCurrency] = useState(null);
+  const [ toggleShow, setToggleShow ] = useState(true);
+  const [ selectedOption, setSelectedOption ] = useState("oneTime");
+  const [ isCurrencyFocus, setCurrencyFocus ] = useState(false);
+  const [ selectedCurrency, setSelectedCurrency ] = useState(null);
   const { countryCodes } = useSelector((state) => state.country);
-  const [couponValue, setCouponValue] = useState("");
-  const [couponApplied, setCouponApplied] = useState(false);
-  const [couponError, setCouponError] = useState("");
+  const [ couponValue, setCouponValue ] = useState("");
+  const [ couponApplied, setCouponApplied ] = useState(false);
+  const [ couponError, setCouponError ] = useState("");
   const {
     products = [],
     error,
@@ -65,7 +64,7 @@ const Payment = () => {
   useEffect(() => {
     dispatch(fetchCart());
     dispatch(fetchCountryCodes());
-  }, [dispatch]);
+  }, [ dispatch ]);
 
   const currencyData = countryCodes.map((code) => ({
     label: code.currency,
@@ -84,12 +83,13 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    if (couponCode !== "") {
+    if (couponCode !== "")
+    {
       setCouponValue(couponCode);
       setCouponError("");
       setCouponApplied(true);
     }
-  }, [couponCode]);
+  }, [ couponCode ]);
 
   const handleBackPress = () => {
     navigation.goBack();
@@ -98,23 +98,26 @@ const Payment = () => {
   const handleApplyCoupon = () => {
     dispatch(Apply_Coupon(couponValue))
       .then((response) => {
-        if (response.meta.requestStatus === "fulfilled") {
+        if (response.meta.requestStatus === "fulfilled")
+        {
           setCouponApplied(true);
           dispatch(fetchCart());
           setCouponError("");
-        } else if (response.meta.requestStatus === "rejected") {
+        } else if (response.meta.requestStatus === "rejected")
+        {
           setCouponError(response.payload.message || "Failed to apply coupon");
         }
       })
       .catch((error) => {
-        console.log("Coupon Apply Error: ", error);
+        // console.log("Coupon Apply Error: ", error);
         setCouponError(error.message);
       });
   };
 
   const handleRemoveCoupon = () => {
     dispatch(Remove_Coupon()).then((response) => {
-      if (response.meta.requestStatus === "fulfilled") {
+      if (response.meta.requestStatus === "fulfilled")
+      {
         dispatch(fetchCart());
         setCouponApplied(false);
         setCouponValue("");
@@ -123,15 +126,17 @@ const Payment = () => {
     });
   };
 
-  if (loading?.fetch) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="grey" />
-      </View>
-    );
-  }
+  // if (loading?.fetch)
+  // {
+  //   return (
+  //     <View style={styles.container}>
+  //       <ActivityIndicator size="large" color="grey" />
+  //     </View>
+  //   );
+  // }
 
-  if (error?.fetch) {
+  if (error?.fetch)
+  {
     return (
       <View style={styles.container}>
         <Text style={styles.errorText}>{error}</Text>
@@ -146,20 +151,22 @@ const Payment = () => {
     );
   };
   const renderItem = ({ item }) => (
-    <View style={{paddingHorizontal:responsiveWidth(5)}}>
-
-    <CommonCart
-      productId={item.cartItemId}
-      itemText={item.product.name}
-      quantityText={`${item.quantity} x`}
-      priceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol}${item.product.priceList[0].oldPrice} / ${item.product.priceList[0].currencySymbol}${item.product.priceList[0].price}`}
-      totalPriceText={`${item.product.priceList[0].currency} ${item.product.priceList[0].currencySymbol
-        }${item.quantity * item.product.priceList[0].price}`}
-      imgUrl={item.product.thumbImage[0]}
-      showDeleteIcon={true}
-      showIncrementContainer={true}
-    />
-        </View>
+    <View style={{ paddingHorizontal: responsiveWidth(5) }}>
+      <CommonCart
+        productId={item.cartItemId}
+        itemText={item.product.name}
+        quantityText={`${ item.quantity } x`}
+        oldpriceText={`${ item.product.priceList[ 0 ].currency } ${ item.product.priceList[ 0 ].currencySymbol }${ item.product.priceList[ 0 ].oldPrice }`}
+        priceValue={item.product.priceList[ 0 ].price}
+        priceText={`/${ item.product.priceList[ 0 ].currencySymbol }`}
+        totalPriceText={`${ item.quantity * item.product.priceList[ 0 ].price
+          }`}
+        currency={`${ item.product.priceList[ 0 ].currency } ${ item.product.priceList[ 0 ].currencySymbol }`}
+        imgUrl={item.product.thumbImage[ 0 ]}
+        showDeleteIcon={true}
+        showIncrementContainer={true}
+      />
+    </View>
   );
 
   const renderFlatlist = () => {
@@ -218,8 +225,14 @@ const Payment = () => {
           <View />
         )}
         <View style={styles.lineStyles} />
-        <Text style={[styles.totalItemsText]}>Total items: 11</Text>
-        <Text style={styles.orderTotalText}>Order Total: $220.00</Text>
+        <Text style={[styles.totalItemsText]}>Total items:{products.length}</Text>
+        <Text style={styles.orderTotalText}>
+  Order Total: {products.reduce(
+    (sum, item) => sum + item.quantity * item.product.priceList[0].price,
+    0
+  ) - (couponApplied ? couponDiscount : 0)}
+</Text>
+
         <View style={styles.headerStyles}>
           <DropdownComponent
             data={currencyData}
@@ -255,7 +268,7 @@ const Payment = () => {
           </View>
         </View>
 
-        <View style={[styles.lineStyles, { marginTop: 30 }]} />
+        <View style={[ styles.lineStyles, { marginTop: 30 } ]} />
         <View style={styles.radioOption}>
           <TouchableOpacity
             style={[
@@ -284,7 +297,7 @@ const Payment = () => {
             style={styles.payButton}
             onPress={() =>
               alert(
-                `Pay ${selectedOption === "oneTime" ? "$108.00" : "$9.00 Today"
+                `Pay ${ selectedOption === "oneTime" ? "$108.00" : "$9.00 Today"
                 }`
               )
             }
@@ -293,8 +306,8 @@ const Payment = () => {
           </TouchableOpacity>
         </View>
       </View>
-    )
-  }
+    );
+  };
   return (
     <>
       <KeyboardAvoidingView
@@ -324,7 +337,7 @@ const Payment = () => {
           onIndexChanged={onIndexChanged}
           index={index}
         >
-          <ScrollView style={[styles.bottomSlideContainer]}>
+          <ScrollView style={[ styles.bottomSlideContainer ]}>
             {renderCoupon()}
           </ScrollView>
           <View style={styles.bottomSlideContainer}>

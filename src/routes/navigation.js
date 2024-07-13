@@ -10,7 +10,7 @@ import AuthHome from "./authHome";
 export default function Navigation() {
   const [regUser, setRegUser] = useState(true);
   const login_type = AsyncStorage.getItem("loginUser").then((value) => {
-    console.log("login user", value);
+    // console.log("login user", value);
     setRegUser(JSON.parse(value));
   });
   return (

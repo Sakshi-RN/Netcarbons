@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const ProductSlider = ({ dataItem, productDetailsData ,productId }) => {
   const navigation = useNavigation();
-  console.log("Product Slider :" ,dataItem)
+  // console.log("Product Slider :" ,dataItem)
   return (
     <View style={styles.cardContainer}>
       <SwiperFlatList
