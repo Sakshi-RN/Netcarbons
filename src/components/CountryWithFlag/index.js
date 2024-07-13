@@ -1,29 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Modal, FlatList, StyleSheet } from 'react-native';
 import { Country } from 'country-state-city';
 import { Colors } from '../../theme/colors';
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCountryCodes, fetchGeolocationByIP, setSelectedCountry } from '../../redux/features/countryCodeReducer';
 import { Fonts } from '../../theme/fonts';
 import { DropdownArrowIcon } from '../../assets';
 
 
 const CountryComponent = ({ isVisible, toggleModal, onSelectCountry }) => {
-    const dispatch = useDispatch();
-    const { countryCodes, loading, error, selectedCountry, countryName } = useSelector(state => state.country);
-
-    useEffect(() => {
-        dispatch(fetchCountryCodes());
-        dispatch(fetchGeolocationByIP());
-    }, [dispatch]);
-
-    useEffect(() => {
-        if (countryName) {
-            dispatch(setSelectedCountry(countryName));
-        }
-    }, [countryName, dispatch]);
-
     const countries = Country.getAllCountries().map((country) => ({
         isoCode: country.isoCode,
         name: country.name,
@@ -31,7 +15,6 @@ const CountryComponent = ({ isVisible, toggleModal, onSelectCountry }) => {
     }));
 
     const handleCountryChange = (country) => {
-        dispatch(setSelectedCountry(country.name));
         onSelectCountry(country);
         toggleModal();
     };
