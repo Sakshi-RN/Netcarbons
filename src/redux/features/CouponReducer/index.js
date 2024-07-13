@@ -22,7 +22,6 @@ export const Apply_Coupon = createAsyncThunk(
           },
         }
       );
-      console.log("Coupon Applied: 🚀⚙️", response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(
@@ -47,7 +46,6 @@ export const Remove_Coupon = createAsyncThunk(
           },
         }
       );
-      console.log("Coupon Removed: 🚀⚙️", response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(

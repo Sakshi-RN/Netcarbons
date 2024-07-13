@@ -84,7 +84,6 @@ const ChangePassword = () => {
             }
             dispatch(user.changePasswordThread(data))
             .then((responseJson) => {
-                // console.log("responsedata=====", responseJson?.payload)
                 if(responseJson?.payload?.success == true){
                     showSuccessMessage(responseJson?.payload?.message)
                     navigation.navigate("Setting")
