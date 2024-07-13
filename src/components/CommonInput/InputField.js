@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: responsiveFontSize(2),
     color: Colors.OFFBLACK,
-    fontFamily:Fonts.regular
+    fontFamily:Fonts.medium
   },
   inputContainer: {
     flexDirection: 'row',
