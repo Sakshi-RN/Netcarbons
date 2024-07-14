@@ -24,6 +24,7 @@ import {
   Set_Address_Field,
 } from "../../../redux/features/changeAddressReducer";
 import PhoneCodeComponent from "../../../components/PhoneCodeComponent";
+import SecondaryButton from "../../../components/SecondaryButton";
 
 const Address = () => {
   const navigation = useNavigation();
@@ -171,7 +172,7 @@ const Address = () => {
       return;
     }
 
-    dispatch(Change_Address(address)).then((response)=>{
+    dispatch(Change_Address(address)).then((response) => {
       dispatch(Get_Address());
     })
     navigation.navigate("Payment");
@@ -183,7 +184,7 @@ const Address = () => {
   };
 
   const handlePhonenumberChange = (text) => {
-    console.log("Phonenumber" , text)
+    console.log("Phonenumber", text)
     dispatch(Set_Address_Field({ field: "phone", value: text }));
   };
 
@@ -206,6 +207,26 @@ const Address = () => {
     setLastNameError("");
   };
 
+
+  const handleLogin = () => {
+    navigation.navigate("LetStart");
+  };
+
+  const loginToSee = () => {
+    return (
+      <View style={styles.emptyProfileContainer}>
+        <MainButton
+          title="LOG IN"
+          onPress={handleLogin} />
+        <View style={{ marginTop: 20 }}>
+          <SecondaryButton
+            title="GO BACK"
+            onBackPress={handleBackPress}
+          />
+        </View>
+      </View>
+    )
+  }
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -328,6 +349,7 @@ const Address = () => {
       <View style={styles.buttonContainer}>
         <MainButton title="Continue" onPress={handleSave} />
       </View>
+      {/* {loginToSee()} */}
     </KeyboardAvoidingView>
   );
 };

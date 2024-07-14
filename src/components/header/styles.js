@@ -4,29 +4,13 @@ import { Fonts } from "../../theme/fonts";
 
 export default StyleSheet.create({
     headerWrapper:{
-        // flex:1,
-        // backgroundColor:Colors.WHITE,
-        // shadowColor: "#000000",
-        // shadowOffset: {
-        // width: 0,
-        // height: 3,
-        // },
-        // shadowOpacity:  0.17,
-        // shadowRadius: 3.05,
-        // elevation: 4, 
-        // borderBottomWidth:0.5,
-        // borderBottomColor:Colors.LIGHTGREYOFF,
-        // borderBottomWidth:1,
         marginTop:Platform.OS === "ios" ? 7 :0
-        // paddingTop:Platform.OS === "ios" ? 35 :0
-        // paddingTop:Platform.OS === "ios" ? 45 :0
     },
     
 	header:{
        flexDirection:"row",
        justifyContent:'space-between',
        alignItems:'flex-end',
-    //    paddingVertical:30,
        paddingTop: Platform.OS == "ios" ? 40 :25,
        paddingBottom: Platform.OS == "ios" ? 30 :30,
        paddingHorizontal:15
@@ -39,8 +23,6 @@ export default StyleSheet.create({
     },
     headerRight:{
         justifyContent:'center',
-        // marginTop:3, 
-        // backgroundColor:'red'
     },
     headerRow:{
         flexDirection:'row',
@@ -66,11 +48,8 @@ export default StyleSheet.create({
         height:'100%'
     },
     appLogo:{
-        // width:41, 
-        // height:35
         width:135, 
         height:24,
-        // marginTop:0
     },
     cancelText:{
         fontSize:15,

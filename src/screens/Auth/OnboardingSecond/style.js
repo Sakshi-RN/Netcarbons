@@ -7,11 +7,7 @@ import { responsiveHeight } from "react-native-responsive-dimensions";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        // flexDirection:'column',
         backgroundColor:Colors.white,
-        // alignItems:'center',
-        // justifyContent:'center',
-        // paddingHorizontal: dynamicSize(15, true)
     },
     welcomeContainer:{
         flex:1, 
