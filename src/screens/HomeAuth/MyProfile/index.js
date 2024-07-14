@@ -24,6 +24,9 @@ import MainButton from '../../../components/MainButton'
 const MyProfile = () => {
   const navigation = useNavigation();
   const profile = useSelector((state) => state.profile.data);
+  const loginData = useSelector((state) => state.authReducer.data);
+  console.log("authReducerauthReducerauthReducer",loginData)
+  
   const dispatch = useDispatch();
   const logoutUser = async () => {
     let alertData = {
@@ -154,8 +157,8 @@ const MyProfile = () => {
       />
       {/* {loginToSee()} */}
       <ScrollView>
-        {renderProfileHeader()}
-        {renderMenu()}
+        {/* {renderProfileHeader()} */}
+        {/* {renderMenu()} */}
       </ScrollView>
       <BlueBottomButton />
     </View>
