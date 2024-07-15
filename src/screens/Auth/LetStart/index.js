@@ -72,7 +72,7 @@ const LetStart = ({ navigation }) => {
                             />
                         </View>
 
-                        <TouchableOpacity style={styles.signupWrapper}>
+                        <TouchableOpacity style={styles.signupWrapper} onPress={()=>{navigation.navigate("Home")}}>
                             <Text style={styles.signupText}>I’ll sign up later</Text>
                         </TouchableOpacity>
                     </View>

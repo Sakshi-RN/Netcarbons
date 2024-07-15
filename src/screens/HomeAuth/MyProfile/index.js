@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -18,16 +18,28 @@ import { fetchProfile } from "../../../redux/features/profileReducer";
 import Entypo from "react-native-vector-icons/Entypo";
 import { Colors } from "../../../theme/colors";
 import BlueBottomButton from '../../../components/BlueBottomButton';
-import MainButton from '../../../components/MainButton'
-
+import MainButton from '../../../components/MainButton';
 
 const MyProfile = () => {
   const navigation = useNavigation();
   const profile = useSelector((state) => state.profile.data);
-  const loginData = useSelector((state) => state.authReducer.data);
-  console.log("authReducerauthReducerauthReducer",loginData)
-  
   const dispatch = useDispatch();
+  const [tokenIs, setTokenIs] = useState(null);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem('token');
+        setTokenIs(token);
+      } catch (error) {
+        console.error("Error fetching token from AsyncStorage:", error);
+      }
+    };
+
+    fetchToken();
+    dispatch(fetchProfile());
+  }, [dispatch]);
+
   const logoutUser = async () => {
     let alertData = {
       title: "Logout",
@@ -55,13 +67,10 @@ const MyProfile = () => {
     confirmAlert(alertData);
   };
 
-  useEffect(() => {
-    dispatch(fetchProfile());
-  }, [navigation]);
-
   const handleBackPress = () => {
     navigation.goBack();
   };
+
   const handleLogin = () => {
     navigation.navigate("LetStart");
   };
@@ -111,6 +120,7 @@ const MyProfile = () => {
       </View>
     );
   };
+
   const renderProfileHeader = () => {
     return (
       <View>
@@ -144,21 +154,30 @@ const MyProfile = () => {
     return (
       <View style={styles.emptyProfileContainer}>
         <MainButton
-          title="LOG IN" 
-          onPress={handleLogin}/>
+          title="LOG IN"
+          onPress={handleLogin} />
         <Text style={styles.loginText}>Login to see profile</Text>
       </View>
-    )
-  }
+    );
+  };
+
   return (
     <View style={styles.container}>
       <CommonHeader
         onBackPress={handleBackPress}
       />
-      {/* {loginToSee()} */}
+
       <ScrollView>
-        {/* {renderProfileHeader()} */}
-        {/* {renderMenu()} */}
+        {tokenIs ? (
+          <>
+            {renderProfileHeader()}
+            {renderMenu()}
+          </>
+        ) : (
+          <>
+            {loginToSee()}
+          </>
+        )}
       </ScrollView>
       <BlueBottomButton />
     </View>
@@ -166,6 +185,3 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
-
-
-
