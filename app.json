@@ -27,6 +27,13 @@
             "./src/assets/fonts/WorkSans-Regular.ttf"
           ]
         }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "your.merchant.identifier",
+          "enableGooglePay": true
+        }
       ]
     ],
     "ios": {
