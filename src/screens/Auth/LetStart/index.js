@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { View, KeyboardAvoidingView, Text, Platform, ScrollView, TouchableOpacity } from 'react-native'
-import MainContainer from '../../../components/mainContainer'
 import imagePaths from '../../../utilities/imagePaths'
 import ImageWrapper from '../../../components/image'
 import styles from './style'
@@ -8,20 +7,13 @@ import MainButton from '../../../components/MainButton'
 import SecondaryButton from '../../../components/SecondaryButton'
 
 const LetStart = ({ navigation }) => {
-    const [value, setValue] = useState(null);
-    const [isFocus, setIsFocus] = useState(false);
-    const data = [
-        { label: 'United States', value: 'united_states' },
-        { label: 'London', value: 'london' },
-        { label: 'Australia', value: 'australia' }
-    ];
 
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
         >
-            {/* // <MainContainer fluid={true}> */}
+      
             <ScrollView style={styles.container}>
                 <View style={styles.welcomeContainer}>
                     <View>
@@ -72,14 +64,13 @@ const LetStart = ({ navigation }) => {
                             />
                         </View>
 
-                        <TouchableOpacity style={styles.signupWrapper} onPress={()=>{navigation.navigate("Home")}}>
+                        <TouchableOpacity style={styles.signupWrapper}  onPress={() => navigation.navigate("WelcomeUser")}>
                             <Text style={styles.signupText}>I’ll sign up later</Text>
                         </TouchableOpacity>
                     </View>
 
                 </View>
             </ScrollView>
-            {/* // </MainContainer> */}
         </KeyboardAvoidingView>
     )
 }

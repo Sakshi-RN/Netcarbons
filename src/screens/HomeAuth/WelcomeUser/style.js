@@ -2,7 +2,7 @@ import { Platform, StyleSheet } from "react-native";
 import { Colors } from "../../../theme/colors";
 import { Fonts } from "../../../theme/fonts";
 import { dynamicSize } from "../../../utilities/helpers";
-import { responsiveHeight } from "react-native-responsive-dimensions";
+import { responsiveHeight,responsiveWidth } from "react-native-responsive-dimensions";
 export default StyleSheet.create({
     container: {
         flex: 1,
@@ -44,6 +44,12 @@ export default StyleSheet.create({
     titleWrapper: {
         paddingHorizontal: dynamicSize(8, true),
         top:responsiveHeight(-13)
+    },
+    profileImage: {
+        width: responsiveWidth(15),
+        height: responsiveWidth(15),
+        borderRadius: responsiveWidth(8),
+       
     },
     headerRow: {
         flexDirection: 'row',

@@ -6,6 +6,8 @@ import Address from "../screens/HomeAuth/Address";
 import Checkout from "../screens/HomeAuth/Checkout";
 import ConfirmOrder from "../screens/HomeAuth/ConfirmOrder";
 import ThankyouPage from "../screens/HomeAuth/ThankyouPage";
+import WelcomeUser from "../screens/HomeAuth/WelcomeUser";
+
 const Stack = createNativeStackNavigator();
 
 export const HomeStack = (props) => (
@@ -22,6 +24,7 @@ export const HomeStack = (props) => (
         <Stack.Screen name="Checkout" component={Checkout} />
         <Stack.Screen name="ConfirmOrder" component={ConfirmOrder} />
         <Stack.Screen name="ThankyouPage" component={ThankyouPage} />
+		<Stack.Screen name="WelcomeUser" component={WelcomeUser} />
 	</Stack.Navigator>
 );
 
